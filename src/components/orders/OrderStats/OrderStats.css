@@ -1,0 +1,233 @@
+.order-stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid #f3f4f6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.order-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.stat-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.order-stat-card:hover .stat-icon-wrapper {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.stat-icon-wrapper.orange {
+  background: linear-gradient(135deg, #f97316 0%, #f97316 100%);
+  color: #fff;
+}
+
+.stat-icon-wrapper.blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #3b82f6 100%);
+  color: #fff;
+}
+
+.stat-icon-wrapper.red {
+  background: linear-gradient(135deg, #ef4444 0%, #ef4444 100%);
+  color: #fff;
+}
+
+.stat-icon-wrapper.green {
+  background: linear-gradient(135deg, #10b981 0%, #10b981 100%);
+  color: #fff;
+}
+
+.stat-icon {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+  flex: 1;
+  line-height: 1.3;
+}
+
+.stat-content {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.stat-info {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 32px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.stat-change-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stat-change {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-change.orange.positive {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.stat-change.blue.positive {
+  background: #eff6ff;
+  color: #3b82f6;
+}
+
+.stat-change.red.negative {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.stat-change.green.positive {
+  background: #f0fdf4;
+  color: #10b981;
+}
+
+.stat-period {
+  color: #9ca3af;
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.stat-chart {
+  width: 80px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.mini-chart {
+  width: 100%;
+  height: 100%;
+}
+
+.chart-line.orange {
+  color: #f97316;
+}
+
+.chart-line.blue {
+  color: #3b82f6;
+}
+
+.chart-line.red {
+  color: #ef4444;
+}
+
+.chart-line.green {
+  color: #10b981;
+}
+
+.chart-fill.orange {
+  color: #f97316;
+}
+
+.chart-fill.blue {
+  color: #3b82f6;
+}
+
+.chart-fill.red {
+  color: #ef4444;
+}
+
+.chart-fill.green {
+  color: #10b981;
+}
+
+/* Progress bar */
+.stat-progress {
+  width: 100%;
+  height: 4px;
+  background: #f3f4f6;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.stat-progress-bar {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1s ease;
+  animation: progressGrow 1.5s ease;
+}
+
+@keyframes progressGrow {
+  from {
+    width: 0;
+  }
+}
+
+.stat-progress-bar.orange {
+  background: linear-gradient(90deg, #f97316, #fb923c);
+}
+
+.stat-progress-bar.blue {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.stat-progress-bar.red {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+.stat-progress-bar.green {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stat-value {
+    font-size: 28px;
+  }
+
+  .stat-chart {
+    width: 60px;
+    height: 32px;
+  }
+}
