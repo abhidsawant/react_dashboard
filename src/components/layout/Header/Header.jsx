@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Search, Bell, ChevronDown } from 'lucide-react';
+import { Search, Bell, ChevronDown, Sun, Moon  } from 'lucide-react';
 import './Header.css';
 
 const Header = () => {
@@ -13,6 +13,8 @@ const Header = () => {
     flag: 'https://flagcdn.com/w40/us.png',
     fullName: 'Eng (US)'
   });
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
 
   const languages = [
     { code: 'EN', name: 'English', flag: 'https://flagcdn.com/w40/us.png', fullName: 'Eng (US)' },
@@ -54,6 +56,21 @@ const Header = () => {
     setIsLanguageOpen(false);
   };
 
+  const toggleDarkMode = () => {
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    document.documentElement.setAttribute('data-theme', newMode ? 'dark' : 'light');
+    localStorage.setItem('theme', newMode ? 'dark' : 'light');
+  };
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setIsDarkMode(true);
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, []);
+
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -81,6 +98,10 @@ const Header = () => {
           />
         </div>
         
+        <button className="theme-toggle" onClick={toggleDarkMode}>
+          {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+
         {/* Language Selector */}
         <div className="language-selector" ref={dropdownRef}>
           <button 

@@ -1,9 +1,10 @@
 .products-table-container {
   border-radius: 12px;
-  border: 1px solid #f3f4f6;
+  border: 1px solid var(--border-color);
   overflow: hidden;
   max-height: 600px;
   overflow-y: auto;
+  transition: border-color 0.3s ease;
 }
 
 /* Custom Scrollbar */
@@ -12,18 +13,18 @@
 }
 
 .products-table-container::-webkit-scrollbar-track {
-  background: #f9fafb;
+  background: var(--input-bg);
   border-radius: 10px;
 }
 
 .products-table-container::-webkit-scrollbar-thumb {
-  background: #d1d5db;
+  background: var(--border-color);
   border-radius: 10px;
   transition: background 0.2s ease;
 }
 
 .products-table-container::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: var(--text-secondary);
 }
 
 /* Firefox Scrollbar */
@@ -41,11 +42,11 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #fafafa;
+  background: var(--hover-bg);
 }
 
 .products-table thead tr {
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .products-table th {
@@ -53,9 +54,9 @@
   text-align: left;
   font-size: 12px;
   font-weight: 500;
-  color: #9ca3af;
+  color: var(--text-secondary);
   text-transform: capitalize;
-  background: #fafafa;
+  background: var(--hover-bg);
 }
 
 .checkbox-col {
@@ -77,12 +78,12 @@
 }
 
 .products-table tbody tr {
-  border-bottom: 1px solid #f9fafb;
+  border-bottom: 1px solid var(--border-color);
   transition: background 0.2s ease;
 }
 
 .products-table tbody tr:hover {
-  background: #fafafa;
+  background: var(--hover-bg);
 }
 
 .products-table td {
@@ -107,7 +108,7 @@
 .product-image {
   width: 48px;
   height: 48px;
-  background: #f9fafb;
+  background: var(--input-bg);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -137,7 +138,7 @@
 .product-name {
   font-size: 14px;
   font-weight: 600;
-  color: #1f2937;
+  color: var(--text-primary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -145,16 +146,16 @@
 
 .product-id {
   font-size: 12px;
-  color: #9ca3af;
+  color: var(--text-secondary);
 }
 
 .product-price {
   font-weight: 600;
-  color: #1f2937;
+  color: var(--text-primary);
 }
 
 .product-stock {
-  color: #6b7280;
+  color: var(--text-tertiary);
 }
 
 .low-stock {
@@ -177,13 +178,13 @@
   justify-content: space-between;
   font-size: 10px;
   font-weight: 600;
-  color: #9ca3af;
+  color: var(--text-secondary);
 }
 
 .progress-bar {
   width: 100%;
   height: 6px;
-  background: #f3f4f6;
+  background: var(--border-color);
   border-radius: 3px;
   overflow: hidden;
 }

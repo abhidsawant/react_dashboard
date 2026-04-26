@@ -4,15 +4,94 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --card-bg: #ffffff;
+  --header-bg: #ffffff;
+  --input-bg: #f9fafb;
+  --hover-bg: #f9fafb;
+  --border-color: #f3f4f6;
+  --text-primary: #1f2937;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --shadow: rgba(0, 0, 0, 0.05);
+  
+  /* Leaderboard Light Theme */
+  --leaderboard-bg: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
+  --podium-card-bg: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+  --podium-border: #cbd5e1;
+  --podium-top-line: linear-gradient(90deg, transparent, #3b82f6, transparent);
+  --podium-first-bg: linear-gradient(180deg, #fef3c7 0%, #fde68a 100%);
+  --podium-avatar-bg: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+  --podium-avatar-border: #cbd5e1;
+  --podium-volume-color: #1f2937;
+  --podium-base-top-bg: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  --podium-first-base-top: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);
+  --podium-base-front-bg: linear-gradient(180deg, #f3f4f6 0%, #e5e7eb 100%);
+  --podium-first-base-front: linear-gradient(180deg, #fde68a 0%, #fbbf24 100%);
+  --podium-base-side-bg: linear-gradient(180deg, #cbd5e1 0%, #94a3b8 100%);
+  --podium-first-base-side: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%);
+  --podium-side-border: #94a3b8;
+  --leaderboard-table-bg: rgba(255, 255, 255, 0.9);
+  --leaderboard-table-border: #e5e7eb;
+  --leaderboard-thead-bg: rgba(243, 244, 246, 0.9);
+  --leaderboard-row-border: #f3f4f6;
+  --leaderboard-row-hover: rgba(239, 246, 255, 0.8);
+  --leaderboard-text: #1f2937;
+  --leaderboard-grid-pattern: rgba(59, 130, 246, 0.03);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --card-bg: #1e293b;
+  --header-bg: #1e293b;
+  --input-bg: #334155;
+  --hover-bg: #334155;
+  --border-color: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #cbd5e1;
+  --shadow: rgba(0, 0, 0, 0.3);
+  
+  /* Leaderboard Dark Theme */
+  --leaderboard-bg: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  --podium-card-bg: linear-gradient(180deg, #1a1a1a 0%, #0d0d0d 100%);
+  --podium-border: #2a2a2a;
+  --podium-top-line: linear-gradient(90deg, transparent, #3f3f46, transparent);
+  --podium-first-bg: linear-gradient(180deg, #0a1f15 0%, #051008 100%);
+  --podium-avatar-bg: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  --podium-avatar-border: #374151;
+  --podium-volume-color: #e5e7eb;
+  --podium-base-top-bg: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+  --podium-first-base-top: linear-gradient(135deg, #1a4d2e 0%, #0f2818 100%);
+  --podium-base-front-bg: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+  --podium-first-base-front: linear-gradient(180deg, #0f2818 0%, #051008 100%);
+  --podium-base-side-bg: linear-gradient(180deg, #0d0d0d 0%, #000000 100%);
+  --podium-first-base-side: linear-gradient(180deg, #051008 0%, #000000 100%);
+  --podium-side-border: #1a1a1a;
+  --leaderboard-table-bg: rgba(0, 0, 0, 0.3);
+  --leaderboard-table-border: #27272a;
+  --leaderboard-thead-bg: rgba(39, 39, 42, 0.5);
+  --leaderboard-row-border: #18181b;
+  --leaderboard-row-hover: rgba(39, 39, 42, 0.3);
+  --leaderboard-text: #d4d4d8;
+  --leaderboard-grid-pattern: rgba(255, 255, 255, 0.02);
+}
+
 body {
   margin: 0;
   font-family: sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .layout {
   display: flex;
   height: 100vh;
-  background: #f8fafc;
+  background: var(--bg-primary);
   font-family: sans-serif;
   overflow: hidden;
 }

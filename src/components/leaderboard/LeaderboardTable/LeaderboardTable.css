@@ -3,8 +3,10 @@
   margin: 0 auto;
   overflow: hidden;
   border-radius: 12px;
-  border: 1px solid #27272a;
-  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--leaderboard-table-border);
+  background: var(--leaderboard-table-bg);
+  transition: background 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .leaderboard-table {
@@ -14,27 +16,27 @@
 }
 
 .leaderboard-table thead tr {
-  background: rgba(39, 39, 42, 0.5);
+  background: var(--leaderboard-thead-bg);
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  border-bottom: 1px solid #27272a;
+  border-bottom: 1px solid var(--leaderboard-table-border);
 }
 
 .leaderboard-table th {
   padding: 16px 24px;
   font-weight: 500;
   text-align: left;
-  color: #9ca3af;
+  color: var(--text-secondary);
 }
 
 .leaderboard-table tbody tr {
-  border-bottom: 1px solid #18181b;
+  border-bottom: 1px solid var(--leaderboard-row-border);
   transition: all 0.3s ease;
 }
 
 .leaderboard-table tbody tr:hover {
-  background: rgba(39, 39, 42, 0.3);
+  background: var(--leaderboard-row-hover);
   transform: scale(1.01);
 }
 
@@ -49,12 +51,16 @@
 
 .leaderboard-table td {
   padding: 16px 24px;
-  color: #d4d4d8;
+  color: var(--leaderboard-text);
 }
 
 .first-rank {
   color: #10b981 !important;
   font-weight: bold;
+}
+
+[data-theme="light"] .first-rank {
+  color: #f59e0b !important;
 }
 
 .user-name {
