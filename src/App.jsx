@@ -3,6 +3,7 @@ import Layout from './components/layout/Layout';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Leaderboard from './pages/Leaderboard/Leaderboard';
 import Orders from './pages/Orders/Orders';
+import Products from './pages/Products/Products';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/products" element={<Products />} />
         </Routes>
       </Layout>
     </BrowserRouter>

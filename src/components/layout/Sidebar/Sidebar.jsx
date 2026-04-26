@@ -23,9 +23,9 @@ const Sidebar = () => {
           <NavLink to="/orders" className="nav-item">
             <ShoppingCart size={20} /> Orders
           </NavLink>
-          <a href="#" className="nav-item">
+          <NavLink to="/products" className="nav-item">
             <Package size={20} /> Products
-          </a>
+          </NavLink>
           <a href="#" className="nav-item">
             <TrendingUp size={20} /> Sales Report
           </a>
