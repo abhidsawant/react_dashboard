@@ -20,56 +20,60 @@ const TopProducts = () => {
     <div className="chart-card top-products-card">
       <h2 className="card-title">Top Products</h2>
       
-      <div className="products-table">
-        <div className="table-header">
-          <span className="header-index">#</span>
-          <span className="header-name">Name</span>
-          <span className="header-popularity">Popularity</span>
-          <span className="header-sales">Sales</span>
-        </div>
-        
-        <div className="products-list">
-          {topProductsData.map((product, index) => {
-            const colors = colorSchemes[index % colorSchemes.length];
-            return (
-              <div key={product.id} className="product-row">
-                <span className="product-index">
-                  {String(product.id).padStart(2, '0')}
-                </span>
-                <div className="product-name-wrapper">
-                  <span className="product-name" title={product.name}>
-                    {product.name}
-                  </span>
-                  <span className="product-name-tooltip">{product.name}</span>
-                </div>
-                <div className="product-popularity">
-                  <div 
-                    className="popularity-track"
-                    style={{ backgroundColor: colors.bg }}
-                  >
+      <div className="products-table-wrapper">
+        <table className="products-table">
+          <thead>
+            <tr className="table-header">
+              <th className="header-index">#</th>
+              <th className="header-name">Name</th>
+              <th className="header-popularity">Popularity</th>
+              <th className="header-sales">Sales</th>
+            </tr>
+          </thead>
+          <tbody className="products-list">
+            {topProductsData.map((product, index) => {
+              const colors = colorSchemes[index % colorSchemes.length];
+              return (
+                <tr key={product.id} className="product-row">
+                  <td className="product-index">
+                    {String(product.id).padStart(2, '0')}
+                  </td>
+                  <td className="product-name-wrapper">
+                    <span className="product-name" title={product.name}>
+                      {product.name}
+                    </span>
+                  </td>
+                  <td className="product-popularity">
                     <div 
-                      className="popularity-bar"
+                      className="popularity-track"
+                      style={{ backgroundColor: colors.bg }}
+                    >
+                      <div 
+                        className="popularity-bar"
+                        style={{ 
+                          width: `${product.popularity}%`,
+                          backgroundColor: colors.bar
+                        }}
+                      ></div>
+                    </div>
+                  </td>
+                  <td>
+                    <span 
+                      className="product-sales"
                       style={{ 
-                        width: `${product.popularity}%`,
-                        backgroundColor: colors.bar
+                        color: colors.badge,
+                        backgroundColor: colors.badgeBg,
+                        borderColor: colors.badge
                       }}
-                    ></div>
-                  </div>
-                </div>
-                <span 
-                  className="product-sales"
-                  style={{ 
-                    color: colors.badge,
-                    backgroundColor: colors.badgeBg,
-                    borderColor: colors.badge
-                  }}
-                >
-                  {product.sales}%
-                </span>
-              </div>
-            );
-          })}
-        </div>
+                    >
+                      {product.sales}%
+                    </span>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
     </div>
   );
