@@ -7,6 +7,21 @@
   border: 1px solid var(--border-color);
   box-shadow: 0 1px 3px var(--shadow);
   transition: border-color 0.3s ease;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .leaflet-map-container {
+    height: 240px;
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .leaflet-map-container {
+    height: 200px;
+    margin-top: 10px;
+  }
 }
 
 .leaflet-container {
@@ -30,10 +45,22 @@
   color: #1f2937;
 }
 
+@media (max-width: 480px) {
+  .popup-content h4 {
+    font-size: 14px;
+  }
+}
+
 .popup-content p {
   margin: 4px 0;
   font-size: 14px;
   color: var(--text-tertiary);
+}
+
+@media (max-width: 480px) {
+  .popup-content p {
+    font-size: 12px;
+  }
 }
 
 .leaflet-tooltip {
@@ -46,6 +73,13 @@
   padding: 4px 8px !important;
 }
 
+@media (max-width: 480px) {
+  .leaflet-tooltip {
+    font-size: 11px !important;
+    padding: 3px 6px !important;
+  }
+}
+
 .leaflet-tooltip::before {
   border-top-color: rgba(0, 0, 0, 0.8) !important;
 }
@@ -55,12 +89,7 @@
   font-size: 12px;
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-  .leaflet-map-container {
-    height: 280px;
-  }
-}
+
 
 /* Fix for Leaflet marker icons */
 .leaflet-marker-icon {
