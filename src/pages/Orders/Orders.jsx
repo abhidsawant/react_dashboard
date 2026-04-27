@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import OrderStats from '../../components/orders/OrderStats/OrderStats';
 import OrdersTable from '../../components/orders/OrdersTable/OrdersTable';
+import OrdersToolbar from '../../components/orders/OrdersToolbar/OrdersToolbar';
 import { fetchOrders } from '../../services/api';
 import { transformOrderData, calculateOrderStats } from '../../utils/orderHelpers';
 import './Orders.css';
@@ -33,6 +34,14 @@ const Orders = () => {
     }
   };
 
+  const handleExport = () => {
+    console.log('Export orders');
+  };
+
+  const handleCreateOrder = () => {
+    console.log('Create new order');
+  };
+
   if (loading) {
     return (
       <div className="orders-page">
@@ -59,6 +68,11 @@ const Orders = () => {
 
   return (
     <div className="orders-page">
+      {/* Action Toolbar */}
+      <OrdersToolbar 
+        onExport={handleExport}
+        onCreateOrder={handleCreateOrder}
+      />
       {/* Stats Overview */}
       <div className="orders-stats-grid">
         {stats.map((stat, index) => (

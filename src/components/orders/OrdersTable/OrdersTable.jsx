@@ -3,7 +3,7 @@ import { Search, Filter, ArrowUpDown, MoreHorizontal, FileText, MessageSquare, P
 import './OrdersTable.css';
 
 const OrdersTable = ({ orders }) => {
-  const tabs = ['All', 'Unfulfilled', 'Unpaid', 'Open', 'Closed'];
+  const tabs = ['All', 'Unfulfilled', 'Unpaid', 'Open', 'Closed', 'Add'];
   const [activeTab, setActiveTab] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -42,9 +42,9 @@ const OrdersTable = ({ orders }) => {
                 onClick={() => setActiveTab(tab)}
                 className={`tab-button ${activeTab === tab ? 'active' : ''}`}
               >
-                {tab === 'Closed' ? (
+                {tab === 'Add' ? (
                   <span className="tab-with-icon">
-                    {tab} <Plus size={12}/>
+                    <Plus size={12}/> {tab}
                   </span>
                 ) : tab}
               </button>
