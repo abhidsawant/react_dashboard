@@ -81,6 +81,7 @@
   height: auto;
   animation: fadeInUp 0.8s ease;
   perspective: 1000px;
+  padding: 0 10px;
 }
 
 @keyframes fadeInUp {
@@ -98,11 +99,12 @@
 @media (max-width: 768px) {
   .leaderboard-page {
     padding: 16px;
+    margin: 0px 10px 10px 10px;
   }
 
   .leaderboard-header {
     margin-bottom: 32px;
-    margin-top: 16px;
+    padding-top: 16px;
   }
 
   .leaderboard-title {
@@ -112,24 +114,38 @@
 
   .leaderboard-subtitle {
     font-size: 12px;
+    padding: 0 10px;
   }
 
   .podium-container {
-    gap: 10px;
+    gap: 12px;
     margin-bottom: 32px;
+    padding: 0 5px;
   }
 }
 
 @media (max-width: 480px) {
+  .leaderboard-page {
+    padding: 12px;
+    margin: 0px 5px 10px 5px;
+  }
+
   .leaderboard-header {
     margin-bottom: 24px;
+    padding-top: 12px;
   }
 
   .leaderboard-title {
     font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .leaderboard-subtitle {
+    font-size: 11px;
   }
 
   .podium-container {
-    gap: 5px;
+    gap: 8px;
+    padding: 0;
   }
 }

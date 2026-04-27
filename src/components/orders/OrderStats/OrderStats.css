@@ -6,12 +6,32 @@
   box-shadow: 0 1px 3px var(--shadow);
   transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  .order-stat-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .order-stat-card {
+    padding: 12px;
+  }
 }
 
 .order-stat-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .order-stat-card:hover {
+    transform: translateY(-2px);
+  }
 }
 
 .stat-header {
@@ -29,6 +49,13 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .stat-icon-wrapper {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .order-stat-card:hover .stat-icon-wrapper {
@@ -76,12 +103,24 @@
   line-height: 1.3;
 }
 
+@media (max-width: 480px) {
+  .stat-label {
+    font-size: 12px;
+  }
+}
+
 .stat-content {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 16px;
   margin-bottom: 12px;
+}
+
+@media (max-width: 480px) {
+  .stat-content {
+    margin-bottom: 8px;
+  }
 }
 
 .stat-info {
@@ -94,6 +133,18 @@
   color: var(--text-primary);
   margin-bottom: 8px;
   line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .stat-value {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-value {
+    font-size: 24px;
+  }
 }
 
 .stat-change-wrapper {
@@ -111,6 +162,13 @@
   display: inline-flex;
   align-items: center;
   gap: 2px;
+}
+
+@media (max-width: 480px) {
+  .stat-change {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
 }
 
 .stat-change.orange.positive {
@@ -143,6 +201,19 @@
   width: 80px;
   height: 40px;
   flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .stat-chart {
+    width: 60px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-chart {
+    display: none;
+  }
 }
 
 .mini-chart {
@@ -185,17 +256,32 @@
 /* Progress bar */
 .stat-progress {
   width: 100%;
-  height: 4px;
+  height: 6px;
   background: var(--border-color);
-  border-radius: 2px;
+  border-radius: 3px;
   overflow: hidden;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .stat-progress {
+    height: 8px;
+    margin-top: 12px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  [data-theme="dark"] .stat-progress {
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 
 .stat-progress-bar {
   height: 100%;
-  border-radius: 2px;
+  border-radius: 3px;
   transition: width 1s ease;
   animation: progressGrow 1.5s ease;
+  min-width: 10%;
 }
 
 @keyframes progressGrow {
@@ -222,12 +308,7 @@
 
 /* Responsive */
 @media (max-width: 768px) {
-  .stat-value {
-    font-size: 28px;
-  }
-
-  .stat-chart {
-    width: 60px;
-    height: 32px;
+  .stat-content {
+    gap: 12px;
   }
 }

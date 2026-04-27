@@ -17,7 +17,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
 }
 
 .orders-tabs {
@@ -27,6 +27,22 @@
   border-radius: 8px;
   border: 1px solid var(--border-color);
   gap: 2px;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* Custom Scrollbar for tabs */
+.orders-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.orders-tabs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.orders-tabs::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
 }
 
 .tab-button {
@@ -40,6 +56,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tab-button:hover {
@@ -114,10 +131,40 @@
 
 .orders-table-wrapper {
   overflow-x: auto;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar for table */
+.orders-table-wrapper::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.orders-table-wrapper::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+.orders-table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.orders-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Firefox Scrollbar */
+.orders-table-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-secondary) var(--border-color);
 }
 
 .orders-table {
   width: 100%;
+  min-width: 900px;
   border-collapse: collapse;
 }
 
@@ -246,21 +293,103 @@
 }
 
 @media (max-width: 768px) {
+  .orders-filter-bar {
+    padding: 12px 16px;
+  }
+
   .filter-content {
     flex-direction: column;
     align-items: stretch;
+    gap: 12px;
   }
 
   .orders-tabs {
-    overflow-x: auto;
+    width: 100%;
+  }
+
+  .tab-button {
+    padding: 6px 12px;
+    font-size: 11px;
   }
 
   .filter-actions {
+    width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .search-wrapper {
+    flex: 1;
+    min-width: 150px;
   }
 
   .search-input-orders {
-    width: 150px;
+    width: 100%;
+  }
+
+  .orders-table-wrapper {
+    max-height: 500px;
+  }
+
+  .orders-table {
+    min-width: 800px;
+  }
+
+  .orders-table th,
+  .orders-table td {
+    padding: 12px 16px;
+    font-size: 12px;
+  }
+
+  .orders-table th {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-filter-bar {
+    padding: 10px 12px;
+  }
+
+  .filter-content {
+    gap: 10px;
+  }
+
+  .tab-button {
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+
+  .action-button {
+    padding: 6px;
+  }
+
+  .search-input-orders {
+    padding: 6px 12px 6px 32px;
+    font-size: 12px;
+  }
+
+  .orders-table-wrapper {
+    max-height: 400px;
+  }
+
+  .orders-table {
+    min-width: 700px;
+  }
+
+  .orders-table th,
+  .orders-table td {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+
+  .orders-table th {
+    font-size: 9px;
+  }
+
+  .status-badge {
+    padding: 3px 8px;
+    font-size: 10px;
   }
 }
 

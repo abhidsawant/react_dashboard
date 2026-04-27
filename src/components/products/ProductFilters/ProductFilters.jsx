@@ -94,10 +94,10 @@ const ProductFilters = ({
 
         <div className="filters-right">
           <button className="filter-btn">
-            <Filter size={18} className="filter-icon" /> Filter
+            <Filter size={18} className="filter-icon" /> <span>Filter</span>
           </button>
           <button className="add-product-btn" onClick={onAddProduct}>
-            <Plus size={18} /> Add new product
+            <Plus size={18} /> <span>Add new product</span>
           </button>
         </div>
       </div>

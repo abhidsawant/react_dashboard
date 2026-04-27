@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Search, Bell, ChevronDown, Sun, Moon  } from 'lucide-react';
+import { Search, Bell, ChevronDown, Sun, Moon, Menu, MoreVertical } from 'lucide-react';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ onMenuClick }) => {
   const location = useLocation();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const searchRef = useRef(null);
   const [selectedLanguage, setSelectedLanguage] = useState({
     code: 'EN',
     name: 'English',
@@ -77,6 +80,9 @@ const Header = () => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsLanguageOpen(false);
       }
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setIsSearchOpen(false);
+      }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -87,9 +93,15 @@ const Header = () => {
 
   return (
     <header className="header">
-      <h1 className="header-title">{getPageTitle()}</h1>
+      <div className="header-left">
+        <button className="hamburger-menu" onClick={onMenuClick}>
+          <Menu size={24} />
+        </button>
+        <h1 className="header-title">{getPageTitle()}</h1>
+      </div>
       <div className="header-actions">
-        <div className="search-container">
+        {/* Desktop Search */}
+        <div className="search-container desktop-search">
           <Search className="search-icon" size={18} />
           <input 
             type="text" 
@@ -97,13 +109,34 @@ const Header = () => {
             className="search-input"
           />
         </div>
+
+        {/* Mobile Search */}
+        <div className="mobile-search-wrapper" ref={searchRef}>
+          <button 
+            className="mobile-search-btn"
+            onClick={() => setIsSearchOpen(!isSearchOpen)}
+          >
+            <Search size={20} />
+          </button>
+          {isSearchOpen && (
+            <div className="mobile-search-dropdown">
+              <input 
+                type="text" 
+                placeholder="Search here..." 
+                className="mobile-search-input"
+                autoFocus
+              />
+            </div>
+          )}
+        </div>
         
-        <button className="theme-toggle" onClick={toggleDarkMode}>
+        {/* Desktop Language & Theme */}
+        <button className="theme-toggle desktop-only" onClick={toggleDarkMode}>
           {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
         </button>
 
         {/* Language Selector */}
-        <div className="language-selector" ref={dropdownRef}>
+        <div className="language-selector desktop-only" ref={dropdownRef}>
           <button 
             className="language-trigger"
             onClick={() => setIsLanguageOpen(!isLanguageOpen)}
@@ -148,6 +181,45 @@ const Header = () => {
         </div>
 
         <div className="header-right">
+          {/* Mobile More Menu */}
+          <div className="mobile-more-menu">
+            <button 
+              className="mobile-more-btn"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              <MoreVertical size={20} />
+            </button>
+            {isMobileMenuOpen && (
+              <div className="mobile-more-dropdown">
+                <button className="mobile-menu-item" onClick={toggleDarkMode}>
+                  {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+                  <span>{isDarkMode ? 'Light Mode' : 'Dark Mode'}</span>
+                </button>
+                <div className="mobile-menu-divider"></div>
+                {languages.map((language) => (
+                  <button
+                    key={language.code}
+                    className={`mobile-menu-item ${selectedLanguage.code === language.code ? 'active' : ''}`}
+                    onClick={() => {
+                      handleLanguageSelect(language);
+                      setIsMobileMenuOpen(false);
+                    }}
+                  >
+                    <img 
+                      src={language.flag} 
+                      alt={language.name}
+                      className="mobile-flag-img"
+                    />
+                    <span>{language.name}</span>
+                    {selectedLanguage.code === language.code && (
+                      <span className="mobile-check">✓</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <button className="notification-button">
             <Bell size={20} className="bell-icon" />
             <span className="notification-badge"></span>

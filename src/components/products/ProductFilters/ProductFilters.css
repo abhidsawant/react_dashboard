@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -15,6 +15,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 1;
+  min-width: 0;
 }
 
 .view-toggle {
@@ -24,6 +26,7 @@
   overflow: hidden;
   background: var(--card-bg);
   transition: background 0.3s ease, border-color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .view-btn {
@@ -53,6 +56,8 @@
 
 .search-wrapper-products {
   position: relative;
+  flex: 1;
+  max-width: 400px;
 }
 
 .search-icon-products {
@@ -80,7 +85,7 @@
 
 .search-input-products {
   padding: 10px 40px 10px 40px;
-  width: 320px;
+  width: 100%;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 12px;
@@ -99,6 +104,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .filter-btn {
@@ -114,6 +120,7 @@
   transition: all 0.2s ease;
   font-size: 14px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .filter-btn:hover {
@@ -137,6 +144,7 @@
   transition: all 0.2s ease;
   font-size: 14px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .add-product-btn:hover {
@@ -250,24 +258,116 @@
 }
 
 @media (max-width: 768px) {
+  .product-filters {
+    margin-bottom: 16px;
+  }
+
   .filters-top-bar {
     flex-direction: column;
     align-items: stretch;
+    margin-bottom: 16px;
+    gap: 12px;
   }
 
   .filters-left {
-    flex-direction: column;
-  }
-
-  .search-input-products {
+    flex-direction: row;
     width: 100%;
   }
 
+  .search-wrapper-products {
+    max-width: 100%;
+  }
+
   .filters-right {
+    width: 100%;
     justify-content: space-between;
+  }
+
+  .filter-btn,
+  .add-product-btn {
+    flex: 1;
+    justify-content: center;
   }
 
   .filters-row {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filters-top-bar {
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .filters-left {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .view-toggle {
+    width: 100%;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  .view-btn {
+    flex: 1;
+    padding: 10px;
+  }
+
+  .search-wrapper-products {
+    width: 100%;
+  }
+
+  .search-icon-products {
+    left: 10px;
+  }
+
+  .search-clear-icon {
+    right: 10px;
+  }
+
+  .search-input-products {
+    padding: 10px 36px 10px 36px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .filters-right {
+    gap: 8px;
+  }
+
+  .filter-btn,
+  .add-product-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .filter-btn span {
+    display: none;
+  }
+
+  .add-product-btn span {
+    display: inline;
+  }
+
+  .filters-row {
+    gap: 10px;
+  }
+
+  .filter-label {
+    font-size: 11px;
+  }
+
+  .filter-select {
+    padding: 9px 12px;
+    border-radius: 10px;
+  }
+
+  .filter-value {
+    font-size: 13px;
   }
 }

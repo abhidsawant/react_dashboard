@@ -11,6 +11,8 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  flex: 1;
+  min-width: 200px;
 }
 
 .date-range-picker {
@@ -23,6 +25,8 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
+  width: 100%;
+  max-width: 280px;
 }
 
 .date-range-picker:hover {
@@ -31,6 +35,7 @@
 
 .calendar-icon {
   color: var(--text-tertiary);
+  flex-shrink: 0;
 }
 
 .date-range-text {
@@ -42,12 +47,15 @@
 
 .chevron-icon {
   color: var(--text-secondary);
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .toolbar-right {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .toolbar-btn {
@@ -142,30 +150,76 @@
   box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
 }
 
+/* Tablet */
+@media (max-width: 1024px) {
+  .orders-toolbar {
+    gap: 12px;
+  }
+
+  .toolbar-btn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .date-range-text {
+    font-size: 13px;
+  }
+}
+
+/* Mobile */
 @media (max-width: 768px) {
   .orders-toolbar {
     flex-direction: column;
     align-items: stretch;
+    gap: 12px;
   }
 
-  .toolbar-left,
+  .toolbar-left {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .date-range-picker {
+    max-width: 100%;
+  }
+
   .toolbar-right {
     width: 100%;
+    justify-content: space-between;
   }
 
-  .toolbar-right {
-    justify-content: space-between;
+  .toolbar-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 12px;
   }
 
   .toolbar-btn span {
     display: none;
   }
 
-  .toolbar-btn {
-    padding: 10px 12px;
+  .create-order-btn {
+    flex: 1.5;
   }
 
+  .create-order-btn span {
+    display: inline;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
   .date-range-text {
-    font-size: 13px;
+    font-size: 12px;
+  }
+
+  .toolbar-btn {
+    padding: 8px 10px;
+  }
+
+  .calendar-icon,
+  .chevron-icon {
+    width: 16px;
+    height: 16px;
   }
 }

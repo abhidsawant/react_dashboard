@@ -6,9 +6,29 @@
   gap: 24px;
 }
 
+@media (min-width: 768px) {
+  .dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (min-width: 1024px) {
   .dashboard {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 16px;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 12px;
+    gap: 12px;
   }
 }
 
@@ -22,9 +42,27 @@
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+@media (min-width: 768px) {
+  .sales-section {
+    grid-column: span 2;
+  }
+}
+
 @media (min-width: 1024px) {
   .sales-section {
     grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .sales-section {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sales-section {
+    padding: 12px;
   }
 }
 
@@ -33,6 +71,14 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 480px) {
+  .section-header {
+    margin-bottom: 16px;
+  }
 }
 
 .section-title {
@@ -41,9 +87,27 @@
   color: var(--text-primary);
 }
 
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 14px;
+  }
+}
+
 .section-subtitle {
   font-size: 14px;
   color: var(--text-secondary);
+}
+
+@media (max-width: 480px) {
+  .section-subtitle {
+    font-size: 12px;
+  }
 }
 
 .export-button-wrapper {
@@ -64,6 +128,13 @@
   color: var(--text-primary);
   cursor: pointer;
   transition: all 0.2s;
+}
+
+@media (max-width: 480px) {
+  .export-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
 }
 
 .export-button:hover {
@@ -116,6 +187,13 @@
   }
 }
 
+@media (max-width: 480px) {
+  .summary-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+  }
+}
+
 .chart-card {
   background: var(--card-bg);
   border-radius: 16px;
@@ -125,13 +203,50 @@
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
+@media (max-width: 768px) {
+  .chart-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-card {
+    padding: 12px;
+  }
+}
+
 .card-title {
   font-size: 18px;
   font-weight: bold;
   color: var(--text-primary);
 }
 
+@media (max-width: 768px) {
+  .card-title {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-title {
+    font-size: 14px;
+  }
+}
+
 .chart-wrapper {
   height: 240px;
   margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .chart-wrapper {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-wrapper {
+    height: 180px;
+    margin-top: 12px;
+  }
 }

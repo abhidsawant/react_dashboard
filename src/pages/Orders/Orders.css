@@ -4,14 +4,29 @@
   min-height: 100%;
 }
 
+@media (max-width: 768px) {
+  .orders-page {
+    padding: 16px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-page {
+    padding: 12px;
+    padding-top: 0;
+  }
+}
+
 .orders-stats-grid {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 16px;
   margin-bottom: 24px;
+  width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .orders-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -20,6 +35,21 @@
 @media (min-width: 1024px) {
   .orders-stats-grid {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .orders-stats-grid {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .orders-stats-grid {
+    gap: 12px;
+    margin-bottom: 12px;
+    grid-template-columns: 1fr;
   }
 }
 

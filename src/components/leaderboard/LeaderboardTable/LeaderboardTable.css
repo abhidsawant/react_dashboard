@@ -1,7 +1,9 @@
 .leaderboard-table-container {
   max-width: 100%;
   margin: 0 auto;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 600px;
   border-radius: 12px;
   border: 1px solid var(--leaderboard-table-border);
   background: var(--leaderboard-table-bg);
@@ -9,8 +11,36 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Custom Scrollbar */
+.leaderboard-table-container::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.leaderboard-table-container::-webkit-scrollbar-track {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+.leaderboard-table-container::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+  border-radius: 10px;
+  transition: background 0.2s ease;
+}
+
+.leaderboard-table-container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+}
+
+/* Firefox Scrollbar */
+.leaderboard-table-container {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-secondary) var(--border-color);
+}
+
 .leaderboard-table {
   width: 100%;
+  min-width: 600px;
   border-collapse: collapse;
   font-size: 14px;
 }
@@ -79,8 +109,13 @@
 }
 
 @media (max-width: 768px) {
+  .leaderboard-table-container {
+    max-height: 500px;
+  }
+
   .leaderboard-table {
     font-size: 12px;
+    min-width: 550px;
   }
 
   .leaderboard-table th,
@@ -94,10 +129,16 @@
 }
 
 @media (max-width: 480px) {
-  .leaderboard-table th:nth-child(4),
-  .leaderboard-table td:nth-child(4),
-  .leaderboard-table th:nth-child(5),
-  .leaderboard-table td:nth-child(5) {
-    display: none;
+  .leaderboard-table-container {
+    max-height: 400px;
+  }
+
+  .leaderboard-table {
+    min-width: 500px;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 10px 12px;
   }
 }

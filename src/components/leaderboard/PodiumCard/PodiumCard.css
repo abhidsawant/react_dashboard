@@ -449,47 +449,185 @@
 /* Responsive */
 @media (max-width: 768px) {
   .podium-card {
-    width: 160px;
-    padding: 20px 16px 16px;
+    width: 140px;
+    padding: 18px 14px 14px;
   }
 
   .podium-base {
-    width: 160px;
+    width: 140px;
   }
 
   .podium-avatar {
-    width: 60px;
-    height: 60px;
-    font-size: 32px;
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
   }
 
   .avatar-glow {
-    width: 70px;
-    height: 70px;
+    width: 66px;
+    height: 66px;
   }
 
-  .rank-second .podium-base-front {
+  .podium-first .avatar-glow {
+    width: 76px;
+    height: 76px;
+  }
+
+  .podium-rank-badge {
+    width: 32px;
+    height: 32px;
+    top: -16px;
+    right: 12px;
+  }
+
+  .rank-number {
+    font-size: 16px;
+  }
+
+  .podium-name {
+    font-size: 10px;
+  }
+
+  .podium-volume {
+    font-size: 16px;
+  }
+
+  .volume-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+
+  .volume-label {
+    font-size: 8px;
+  }
+
+  .rank-second .podium-base-front,
+  .rank-second .podium-base-side {
     height: 90px;
   }
 
-  .rank-first .podium-base-front {
-    height: 140px;
+  .rank-first .podium-base-front,
+  .rank-first .podium-base-side {
+    height: 130px;
   }
 
-  .rank-third .podium-base-front {
+  .rank-third .podium-base-front,
+  .rank-third .podium-base-side {
     height: 60px;
   }
 
   .base-rank-number {
-    font-size: 56px;
+    font-size: 48px;
   }
 
   .rank-first .base-rank-number {
-    font-size: 72px;
+    font-size: 64px;
   }
 
   .podium-first::after {
-    font-size: 28px;
-    top: -35px;
+    font-size: 24px;
+    top: -32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .podium-card {
+    width: 110px;
+    padding: 16px 10px 12px;
+  }
+
+  .podium-base {
+    width: 110px;
+  }
+
+  .podium-avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+    border-radius: 8px;
+  }
+
+  .avatar-glow {
+    width: 58px;
+    height: 58px;
+  }
+
+  .podium-first .avatar-glow {
+    width: 68px;
+    height: 68px;
+  }
+
+  .podium-rank-badge {
+    width: 28px;
+    height: 28px;
+    top: -14px;
+    right: 8px;
+    border-width: 2px;
+  }
+
+  .rank-number {
+    font-size: 14px;
+  }
+
+  .podium-name {
+    font-size: 9px;
+    margin-bottom: 8px;
+  }
+
+  .podium-volume {
+    font-size: 14px;
+    gap: 4px;
+  }
+
+  .volume-icon {
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+  }
+
+  .volume-label {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .podium-base-top {
+    height: 16px;
+  }
+
+  .rank-second .podium-base-front,
+  .rank-second .podium-base-side {
+    height: 70px;
+  }
+
+  .rank-first .podium-base-front,
+  .rank-first .podium-base-side {
+    height: 100px;
+  }
+
+  .rank-third .podium-base-front,
+  .rank-third .podium-base-side {
+    height: 50px;
+  }
+
+  .base-rank-number {
+    font-size: 36px;
+  }
+
+  .rank-first .base-rank-number {
+    font-size: 48px;
+  }
+
+  .podium-first::after {
+    font-size: 20px;
+    top: -28px;
+  }
+
+  .podium-wrapper:hover {
+    transform: translateY(-8px) scale(1.01);
+  }
+
+  .podium-card:hover .podium-avatar {
+    transform: scale(1.1) rotate(5deg);
   }
 }

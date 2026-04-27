@@ -4,6 +4,20 @@
   min-height: 100%;
 }
 
+@media (max-width: 768px) {
+  .products-page {
+    padding: 16px;
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-page {
+    padding: 12px;
+    padding-top: 0;
+  }
+}
+
 .products-card {
   background: var(--card-bg);
   border-radius: 16px;
@@ -11,6 +25,20 @@
   box-shadow: 0 1px 2px var(--shadow);
   padding: 24px;
   transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .products-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-card {
+    padding: 12px;
+    border-radius: 8px;
+  }
 }
 
 /* Loading State */

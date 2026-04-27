@@ -2,3 +2,16 @@
   height: 240px;
   margin-top: 16px;
 }
+
+@media (max-width: 768px) {
+  .chart-wrapper {
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-wrapper {
+    height: 180px;
+    margin-top: 12px;
+  }
+}

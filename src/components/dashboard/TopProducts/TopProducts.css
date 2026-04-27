@@ -4,6 +4,7 @@
 
 .products-table {
   margin-top: 20px;
+  overflow-x: auto;
 }
 
 .table-header {
@@ -14,6 +15,7 @@
   background: var(--input-bg);
   border-radius: 8px;
   margin-bottom: 8px;
+  min-width: 400px;
 }
 
 .table-header span {
@@ -46,7 +48,8 @@
   gap: 1px;
   max-height: 250px;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: auto;
+  min-width: 400px;
 }
 
 /* Custom Scrollbar */
@@ -200,22 +203,27 @@
 }
 
 @media (max-width: 768px) {
+  .products-table {
+    margin-top: 16px;
+  }
+
+  .table-header,
+  .product-row {
+    grid-template-columns: 35px 1fr 140px 60px;
+    gap: 10px;
+    min-width: 400px;
+  }
+
   .table-header {
-    display: none;
+    padding: 10px 12px;
   }
 
   .product-row {
-    grid-template-columns: 30px 1fr;
-    gap: 12px;
     padding: 12px;
   }
 
-  .product-popularity {
-    grid-column: 1 / -1;
-  }
-
-  .product-sales {
-    justify-self: end;
+  .product-name {
+    font-size: 13px;
   }
 
   .products-list {
