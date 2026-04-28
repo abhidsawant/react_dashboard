@@ -82,19 +82,30 @@
 }
 
 .mobile-search-dropdown {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  left: auto;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 8px;
-  min-width: 280px;
-  max-width: calc(100vw - 32px);
+  width: calc(100vw - 32px);
+  max-width: 400px;
   z-index: 1000;
-  animation: dropdownFadeIn 0.2s ease;
+  animation: dropdownFadeInCenter 0.2s ease;
+}
+
+@keyframes dropdownFadeInCenter {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
 }
 
 .mobile-search-input {
@@ -522,6 +533,11 @@
     width: 36px;
     height: 36px;
   }
+
+  .mobile-search-dropdown {
+    width: calc(100vw - 40px);
+    max-width: 350px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -534,8 +550,9 @@
   }
 
   .mobile-search-dropdown {
-    min-width: 240px;
-    right: -8px
+    width: calc(100vw - 32px);
+    max-width: 300px;
+    top: 70px;
   }
 
   .notification-button {
