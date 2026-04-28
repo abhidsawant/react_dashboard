@@ -112,3 +112,23 @@
 .legend-dot.green {
   background: #10B981;
 }
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .visitor-insights {
+    padding: 20px;
+    min-height: 290px;
+  }
+
+  .insights-title {
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+
+  .chart-container {
+    height: 186px;
+  }
+
+  .chart-legend {
+    margin-top: 14px;
+  }
+}

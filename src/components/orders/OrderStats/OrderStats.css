@@ -306,6 +306,24 @@
   background: linear-gradient(90deg, #10b981, #34d399);
 }
 
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .order-stat-card {
+    padding: 18px;
+  }
+
+  .stat-value {
+    font-size: 30px;
+  }
+
+  .stat-label {
+    font-size: 12px;
+  }
+
+  .stat-change {
+    font-size: 12px;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .stat-content {

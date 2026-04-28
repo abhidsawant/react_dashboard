@@ -240,6 +240,25 @@
   transform: translateX(20px);
 }
 
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .products-table-container {
+    max-height: 550px;
+  }
+
+  .products-table {
+    min-width: 850px;
+  }
+
+  .products-table th,
+  .products-table td {
+    padding: 14px 20px;
+  }
+
+  .statistic-col {
+    width: 220px;
+  }
+}
+
 @media (max-width: 768px) {
   .products-table-container {
     max-height: 500px;

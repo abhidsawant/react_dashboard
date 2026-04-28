@@ -108,6 +108,26 @@
   display: inline-block;
 }
 
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .leaderboard-table-container {
+    max-height: 550px;
+  }
+
+  .leaderboard-table {
+    font-size: 13px;
+    min-width: 580px;
+  }
+
+  .leaderboard-table th,
+  .leaderboard-table td {
+    padding: 14px 20px;
+  }
+
+  .leaderboard-table th {
+    font-size: 9px;
+  }
+}
+
 @media (max-width: 768px) {
   .leaderboard-table-container {
     max-height: 500px;

@@ -296,6 +296,57 @@
   display: inline-block;
 }
 
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .products-table-wrapper {
+    max-height: 260px;
+  }
+
+  .products-table {
+    min-width: 580px;
+  }
+
+  .table-header th {
+    padding: 11px 14px;
+    font-size: 10px;
+  }
+
+  .product-row td {
+    padding: 11px 14px;
+  }
+
+  .product-index {
+    font-size: 13px;
+  }
+
+  .product-name {
+    font-size: 13px;
+    max-width: 180px;
+  }
+
+  .popularity-track {
+    width: 140px;
+    height: 7px;
+  }
+
+  .product-sales {
+    font-size: 11px;
+    padding: 3px 9px;
+  }
+
+  .header-index {
+    width: 45px;
+  }
+  .header-name {
+    width: 180px;
+  }
+  .header-popularity {
+    width: 140px;
+  }
+  .header-sales {
+    width: 70px;
+  }
+}
+
 @media (max-width: 768px) {
   .product-sales {
     font-size: 11px;

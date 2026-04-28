@@ -95,6 +95,32 @@
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .leaderboard-page {
+    padding: 24px;
+    margin: 0px 16px 16px 16px;
+  }
+
+  .leaderboard-header {
+    margin-bottom: 40px;
+    padding-top: 24px;
+  }
+
+  .leaderboard-title {
+    font-size: 30px;
+    letter-spacing: 3px;
+  }
+
+  .leaderboard-subtitle {
+    font-size: 13px;
+  }
+
+  .podium-container {
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .leaderboard-page {

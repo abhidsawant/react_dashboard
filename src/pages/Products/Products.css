@@ -106,3 +106,14 @@
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
 }
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .products-page {
+    padding: 24px;
+    padding-top: 0;
+  }
+
+  .products-card {
+    padding: 20px;
+  }
+}

@@ -3,6 +3,13 @@
   margin-top: 16px;
 }
 
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .chart-wrapper {
+    height: 220px;
+    margin-top: 14px;
+  }
+}
+
 @media (max-width: 768px) {
   .chart-wrapper {
     height: 200px;

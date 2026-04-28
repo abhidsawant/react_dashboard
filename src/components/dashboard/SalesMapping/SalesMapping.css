@@ -96,3 +96,10 @@
   margin-left: -12px !important;
   margin-top: -41px !important;
 }
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .leaflet-map-container {
+    height: 260px;
+    margin-top: 14px;
+  }
+}
