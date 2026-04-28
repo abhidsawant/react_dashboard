@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Search, Bell, ChevronDown, Sun, Moon, Menu, MoreVertical } from 'lucide-react';
+import profileImage from '../../../assets/images/Abhi_IMG.jpg';
 import './Header.css';
 
 const Header = ({ onMenuClick }) => {
@@ -225,7 +226,7 @@ const Header = ({ onMenuClick }) => {
             <span className="notification-badge"></span>
           </button>
           <div className="user-profile">
-            <img src="/src/assets/images/Abhi_IMG.jpg" alt="User" className="user-avatar" />
+            <img src={profileImage} alt="User" className="user-avatar" />
             <div className="user-info">
               <p className="user-name">Abhishek</p>
               <p className="user-role">Admin</p>
