@@ -1,4 +1,4 @@
-import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { visitorData } from '../../../utils/dashboardData';
 import './VisitorInsights.css';
 
@@ -9,13 +9,20 @@ const VisitorInsights = () => {
       <div className="chart-container">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={visitorData}>
+            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis 
               dataKey="name" 
               axisLine={false} 
               tickLine={false} 
               tick={{fontSize: 10, fill: '#A0AEC0'}} 
             />
-            <Tooltip />
+            <Tooltip 
+              contentStyle={{ 
+                background: 'white', 
+                border: '1px solid #e5e7eb',
+                borderRadius: '8px'
+              }}
+            />
             <Line type="monotone" dataKey="loyal" stroke="#8B5CF6" strokeWidth={3} dot={false} />
             <Line type="monotone" dataKey="new" stroke="#EF4444" strokeWidth={3} dot={false} />
             <Line type="monotone" dataKey="unique" stroke="#10B981" strokeWidth={3} dot={false} />
