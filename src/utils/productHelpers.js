@@ -23,38 +23,6 @@ export const transformProductData = (apiProducts) => {
   });
 };
 
-// Get category emoji based on category name
-export const getCategoryEmoji = (category) => {
-  const emojiMap = {
-    'beauty': '💄',
-    'fragrances': '🌸',
-    'furniture': '🪑',
-    'groceries': '🛒',
-    'home-decoration': '🏠',
-    'kitchen-accessories': '🍳',
-    'laptops': '💻',
-    'mens-shirts': '👔',
-    'mens-shoes': '👞',
-    'mens-watches': '⌚',
-    'mobile-accessories': '📱',
-    'motorcycle': '🏍️',
-    'skin-care': '🧴',
-    'smartphones': '📱',
-    'sports-accessories': '⚽',
-    'sunglasses': '🕶️',
-    'tablets': '📱',
-    'tops': '👕',
-    'vehicle': '🚗',
-    'womens-bags': '👜',
-    'womens-dresses': '👗',
-    'womens-jewellery': '💍',
-    'womens-shoes': '👠',
-    'womens-watches': '⌚'
-  };
-
-  return emojiMap[category] || '📦';
-};
-
 // Calculate product statistics
 export const calculateProductStats = (products) => {
   const totalProducts = products.length;
