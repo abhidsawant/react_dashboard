@@ -1,5 +1,5 @@
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { visitorData } from '../../../utils/mockData';
+import { visitorData } from '../../../utils/dashboardData';
 import './VisitorInsights.css';
 
 const VisitorInsights = () => {

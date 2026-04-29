@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, CircleMarker, Popup, Tooltip } from 'react-leaflet';
-import { salesByCountry, countryCoordinates } from '../../../utils/mockData';
+import { salesByCountry, countryCoordinates } from '../../../utils/dashboardData';
 import 'leaflet/dist/leaflet.css';
 import './SalesMapping.css';
 

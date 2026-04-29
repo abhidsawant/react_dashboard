@@ -1,5 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { revenueData } from '../../../utils/mockData';
+import { revenueData } from '../../../utils/dashboardData';
 import './TotalRevenue.css';
 
 const TotalRevenue = () => {

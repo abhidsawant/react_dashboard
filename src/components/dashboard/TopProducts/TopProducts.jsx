@@ -1,4 +1,4 @@
-import { topProductsData } from '../../../utils/mockData';
+import { topProductsData } from '../../../utils/dashboardData';
 import './TopProducts.css';
 
 const TopProducts = () => {

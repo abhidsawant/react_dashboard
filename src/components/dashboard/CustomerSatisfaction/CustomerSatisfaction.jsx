@@ -1,5 +1,5 @@
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { satisfactionData } from '../../../utils/mockData';
+import { satisfactionData } from '../../../utils/dashboardData';
 import './CustomerSatisfaction.css';
 
 const CustomerSatisfaction = () => {

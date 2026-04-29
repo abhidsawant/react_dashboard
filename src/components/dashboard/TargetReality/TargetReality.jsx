@@ -1,5 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { targetRealityData } from '../../../utils/mockData';
+import { targetRealityData } from '../../../utils/dashboardData';
 import './TargetReality.css';
 
 const TargetReality = () => {

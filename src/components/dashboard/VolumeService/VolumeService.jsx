@@ -1,5 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { volumeServiceData } from '../../../utils/mockData';
+import { volumeServiceData } from '../../../utils/dashboardData';
 import './VolumeService.css';
 
 const VolumeService = () => {

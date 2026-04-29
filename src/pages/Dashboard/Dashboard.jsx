@@ -7,7 +7,7 @@ import TargetReality from '../../components/dashboard/TargetReality/TargetRealit
 import TopProducts from '../../components/dashboard/TopProducts/TopProducts';
 import SalesMapping from '../../components/dashboard/SalesMapping/SalesMapping';
 import VolumeService from '../../components/dashboard/VolumeService/VolumeService';
-import { summaryData } from '../../utils/mockData';
+import { summaryData } from '../../utils/dashboardData';
 import './Dashboard.css';
 
 const iconMap = {
