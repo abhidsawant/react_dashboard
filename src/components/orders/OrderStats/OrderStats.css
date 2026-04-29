@@ -212,7 +212,8 @@
 
 @media (max-width: 480px) {
   .stat-chart {
-    display: none;
+    width: 60px;
+    height: 32px;
   }
 }
 
