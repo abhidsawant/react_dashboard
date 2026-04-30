@@ -1,7 +1,20 @@
 import { MapContainer, TileLayer, CircleMarker, Popup, Tooltip } from 'react-leaflet';
-import { salesByCountry, countryCoordinates } from '../../../utils/dashboardData';
 import 'leaflet/dist/leaflet.css';
 import './SalesMapping.css';
+
+const countryCoordinates = {
+  'United States': [37.0902, -95.7129],
+  'Brazil': [-14.2350, -51.9253],
+  'Australia': [-25.2744, 133.7751],
+  'India': [20.5937, 78.9629],
+  'China': [35.8617, 104.1954],
+  'United Kingdom': [55.3781, -3.4360],
+  'Germany': [51.1657, 10.4515],
+  'Japan': [36.2048, 138.2529],
+  'Canada': [56.1304, -106.3468],
+  'France': [46.2276, 2.2137],
+  'South Africa': [-30.5595, 22.9375],
+};
 
 const getMarkerSize = (percentage) => Math.max(15, percentage * 2);
 const getMarkerColor = (percentage) => {
@@ -11,7 +24,7 @@ const getMarkerColor = (percentage) => {
   return '#65a30d';
 };
 
-const SalesMapping = () => {
+const SalesMapping = ({ data }) => {
   return (
     <div className="chart-card">
       <h2 className="card-title">Sales Mapping by Country</h2>
@@ -27,7 +40,7 @@ const SalesMapping = () => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           
-          {salesByCountry
+          {data
             .filter(item => countryCoordinates[item.country])
             .map((item, index) => (
               <CircleMarker

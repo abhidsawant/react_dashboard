@@ -1,14 +1,13 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { volumeServiceData } from '../../../utils/dashboardData';
 import './VolumeService.css';
 
-const VolumeService = () => {
+const VolumeService = ({ data }) => {
   return (
     <div className="chart-card">
       <h2 className="card-title">Volume vs Service Level</h2>
       <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={volumeServiceData}>
+          <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis 
               dataKey="month" 

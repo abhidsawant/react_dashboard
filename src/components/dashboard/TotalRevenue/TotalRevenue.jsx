@@ -1,14 +1,13 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
-import { revenueData } from '../../../utils/dashboardData';
 import './TotalRevenue.css';
 
-const TotalRevenue = () => {
+const TotalRevenue = ({ data }) => {
   return (
     <div className="chart-card">
       <h2 className="card-title">Total Revenue</h2>
       <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={revenueData}>
+          <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis 
               dataKey="month" 

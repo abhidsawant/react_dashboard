@@ -111,69 +111,84 @@
   }
 }
 
-.export-button-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.export-button {
+/* Button Group - All buttons in same row */
+.button-group {
   display: flex;
   align-items: center;
-  gap: 8px;
-  border: 1px solid var(--border-color);
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  background: var(--card-bg);
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: all 0.2s;
+  gap: 10px;
 }
 
-@media (max-width: 480px) {
-  .export-button {
-    padding: 6px 12px;
-    font-size: 12px;
+/* Common button styling */
+.action-button {
+  padding: 8px 16px;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.action-button:active {
+  transform: translateY(0);
+}
+
+/* Export Button */
+.export-btn {
+  background-color: #3b82f6;
+}
+
+.export-btn:hover {
+  background-color: #2563eb;
+}
+
+/* Pause Button */
+.pause-btn {
+  background-color: #f59e0b;
+}
+
+.pause-btn:hover {
+  background-color: #d97706;
+}
+
+/* Refresh Button */
+.refresh-btn {
+  background-color: #10b981;
+}
+
+.refresh-btn:hover {
+  background-color: #059669;
+}
+
+/* Responsive - Stack buttons on smaller screens */
+@media (max-width: 768px) {
+  .button-group {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .action-button {
+    flex: 1;
+    min-width: 80px;
   }
 }
 
-.export-button:hover {
-  background: var(--hover-bg);
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.tooltip {
-  position: absolute;
-  bottom: calc(100% + 8px);
-  right: 0;
-  background: #1f2937;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  pointer-events: none;
-  z-index: 10;
-}
-
-.tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  right: 16px;
-  border: 6px solid transparent;
-  border-top-color: #1f2937;
-}
-
-.export-button-wrapper:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-4px);
+@media (max-width: 480px) {
+  .button-group {
+    width: 100%;
+  }
+  
+  .action-button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
 }
 
 .summary-grid {

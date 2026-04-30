@@ -1,19 +1,18 @@
-import { topProductsData } from '../../../utils/dashboardData';
 import './TopProducts.css';
 
-const TopProducts = () => {
+const TopProducts = ({ data }) => {
   // Color schemes for each product
   const colorSchemes = [
-    { bar: '#3b82f6', bg: '#eff6ff', badge: '#3b82f6', badgeBg: '#dbeafe' }, // Blue
-    { bar: '#10b981', bg: '#f0fdf4', badge: '#10b981', badgeBg: '#d1fae5' }, // Green
-    { bar: '#8b5cf6', bg: '#f5f3ff', badge: '#8b5cf6', badgeBg: '#ede9fe' }, // Purple
-    { bar: '#f59e0b', bg: '#fffbeb', badge: '#f59e0b', badgeBg: '#fef3c7' }, // Orange
-    { bar: '#ef4444', bg: '#fef2f2', badge: '#ef4444', badgeBg: '#fee2e2' }, // Red
-    { bar: '#06b6d4', bg: '#ecfeff', badge: '#06b6d4', badgeBg: '#cffafe' }, // Cyan
-    { bar: '#ec4899', bg: '#fdf2f8', badge: '#ec4899', badgeBg: '#fce7f3' }, // Pink
-    { bar: '#84cc16', bg: '#f7fee7', badge: '#84cc16', badgeBg: '#ecfccb' }, // Lime
-    { bar: '#6366f1', bg: '#eef2ff', badge: '#6366f1', badgeBg: '#e0e7ff' }, // Indigo
-    { bar: '#f97316', bg: '#fff7ed', badge: '#f97316', badgeBg: '#ffedd5' }, // Orange-Red
+    { bar: '#3b82f6', bg: '#eff6ff', badge: '#3b82f6', badgeBg: '#dbeafe' },
+    { bar: '#10b981', bg: '#f0fdf4', badge: '#10b981', badgeBg: '#d1fae5' },
+    { bar: '#8b5cf6', bg: '#f5f3ff', badge: '#8b5cf6', badgeBg: '#ede9fe' },
+    { bar: '#f59e0b', bg: '#fffbeb', badge: '#f59e0b', badgeBg: '#fef3c7' },
+    { bar: '#ef4444', bg: '#fef2f2', badge: '#ef4444', badgeBg: '#fee2e2' },
+    { bar: '#06b6d4', bg: '#ecfeff', badge: '#06b6d4', badgeBg: '#cffafe' },
+    { bar: '#ec4899', bg: '#fdf2f8', badge: '#ec4899', badgeBg: '#fce7f3' },
+    { bar: '#84cc16', bg: '#f7fee7', badge: '#84cc16', badgeBg: '#ecfccb' },
+    { bar: '#6366f1', bg: '#eef2ff', badge: '#6366f1', badgeBg: '#e0e7ff' },
+    { bar: '#f97316', bg: '#fff7ed', badge: '#f97316', badgeBg: '#ffedd5' },
   ];
 
   return (
@@ -31,7 +30,7 @@ const TopProducts = () => {
             </tr>
           </thead>
           <tbody className="products-list">
-            {topProductsData.map((product, index) => {
+            {data.map((product, index) => {
               const colors = colorSchemes[index % colorSchemes.length];
               return (
                 <tr key={product.id} className="product-row">

@@ -1,11 +1,10 @@
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import { satisfactionData } from '../../../utils/dashboardData';
 import './CustomerSatisfaction.css';
 
-const CustomerSatisfaction = () => {
+const CustomerSatisfaction = ({ data }) => {
   // Calculate totals
-  const lastMonthTotal = satisfactionData.reduce((sum, item) => sum + item.lastMonth, 0);
-  const thisMonthTotal = satisfactionData.reduce((sum, item) => sum + item.thisMonth, 0);
+  const lastMonthTotal = data.reduce((sum, item) => sum + item.lastMonth, 0);
+  const thisMonthTotal = data.reduce((sum, item) => sum + item.thisMonth, 0);
 
   return (
     <div className="chart-card">
@@ -30,7 +29,7 @@ const CustomerSatisfaction = () => {
       </div>
       <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={satisfactionData} margin={{ top: 10, right: 15, left: 0, bottom: 0 }}>
+          <AreaChart data={data} margin={{ top: 10, right: 15, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="colorLastMonth" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3}/>

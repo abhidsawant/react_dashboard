@@ -1,14 +1,13 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { targetRealityData } from '../../../utils/dashboardData';
 import './TargetReality.css';
 
-const TargetReality = () => {
+const TargetReality = ({ data }) => {
   return (
     <div className="chart-card">
       <h2 className="card-title">Target vs Reality</h2>
       <div className="chart-wrapper">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={targetRealityData}>
+          <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis 
               dataKey="month" 

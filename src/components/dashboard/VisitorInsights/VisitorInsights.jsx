@@ -1,14 +1,13 @@
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { visitorData } from '../../../utils/dashboardData';
 import './VisitorInsights.css';
 
-const VisitorInsights = () => {
+const VisitorInsights = ({ data }) => {
   return (
     <div className="visitor-insights">
       <h2 className="insights-title">Visitor Insights</h2>
       <div className="chart-container">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={visitorData}>
+          <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
             <XAxis 
               dataKey="name" 
