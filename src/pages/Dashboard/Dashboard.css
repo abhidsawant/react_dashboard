@@ -121,7 +121,7 @@
 /* Common button styling */
 .action-button {
   padding: 8px 16px;
-  color: white;
+  color: white !important;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -142,29 +142,29 @@
 
 /* Export Button */
 .export-btn {
-  background-color: #3b82f6;
+  background-color: #3b82f6 !important;
 }
 
 .export-btn:hover {
-  background-color: #2563eb;
+  background-color: #2563eb !important;
 }
 
 /* Pause Button */
 .pause-btn {
-  background-color: #f59e0b;
+  background-color: #f59e0b !important;
 }
 
 .pause-btn:hover {
-  background-color: #d97706;
+  background-color: #d97706 !important;
 }
 
 /* Refresh Button */
 .refresh-btn {
-  background-color: #10b981;
+  background-color: #10b981 !important;
 }
 
 .refresh-btn:hover {
-  background-color: #059669;
+  background-color: #059669 !important;
 }
 
 /* Responsive - Stack buttons on smaller screens */
