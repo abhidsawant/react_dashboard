@@ -87,7 +87,7 @@ export const generateTargetRealityData = () => {
 
 // Generate Top Products Data
 export const generateTopProductsData = () => {
-  return Array.from({ length: 10 }, (_, i) => {
+  const products = Array.from({ length: 10 }, (_, i) => {
     const sales = faker.number.int({ min: 15, max: 50 });
     return {
       id: i + 1,
@@ -96,6 +96,13 @@ export const generateTopProductsData = () => {
       sales
     };
   });
+
+  products.sort((a, b) => b.sales - a.sales);
+
+  return products.map((product, index) => ({
+    ...product,
+    id: index + 1
+  }));
 };
 
 // Generate Sales by Country Data
