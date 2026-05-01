@@ -26,7 +26,7 @@ const iconMap = {
 };
 
 const Dashboard = () => {
-  const { dashboardData, isLive, lastUpdated, toggleLive, refreshData } = useRealtimeDashboard(5000);
+  const { dashboardData, isLive, lastUpdated, toggleLive, refreshData } = useRealtimeDashboard(10000);
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   const handleExport = (format, type) => {
