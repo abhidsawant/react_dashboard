@@ -95,6 +95,15 @@ export const exportToPDF = (data, filename = 'export.pdf', title = 'Report') => 
   doc.save(filename);
 };
 
+
+// Generate timestamp with date and time
+const getTimestamp = () => {
+  const now = new Date();
+  const date = now.toISOString().split('T')[0]; // YYYY-MM-DD
+  const time = now.toTimeString().split(' ')[0].replace(/:/g, '-'); // HH-MM-SS
+  return `${date}_${time}`;
+};
+
 // Export Dashboard Summary to CSV
 export const exportDashboardSummaryToCSV = (summaryData) => {
   const data = summaryData.map(item => ({
@@ -103,7 +112,7 @@ export const exportDashboardSummaryToCSV = (summaryData) => {
     'Change': item.change
   }));
   
-  const timestamp = new Date().toISOString().split('T')[0];
+  const timestamp = getTimestamp();
   exportToCSV(data, `dashboard-summary-${timestamp}.csv`);
 };
 
@@ -115,7 +124,7 @@ export const exportDashboardSummaryToExcel = (summaryData) => {
     'Change': item.change
   }));
   
-  const timestamp = new Date().toISOString().split('T')[0];
+  const timestamp = getTimestamp();
   exportToExcel(data, `dashboard-summary-${timestamp}.xlsx`, 'Summary');
 };
 
@@ -127,13 +136,13 @@ export const exportDashboardSummaryToPDF = (summaryData) => {
     'Change': item.change
   }));
   
-  const timestamp = new Date().toISOString().split('T')[0];
+  const timestamp = getTimestamp();
   exportToPDF(data, `dashboard-summary-${timestamp}.pdf`, "Today's Sales Summary");
 };
 
 // Export Full Dashboard Data
 export const exportFullDashboard = (dashboardData, format = 'excel') => {
-  const timestamp = new Date().toISOString().split('T')[0];
+  const timestamp = getTimestamp();
   
   if (format === 'excel') {
     const workbook = XLSX.utils.book_new();
