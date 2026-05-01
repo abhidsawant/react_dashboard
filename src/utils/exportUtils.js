@@ -167,6 +167,14 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
     // Revenue Sheet
     const revenueSheet = XLSX.utils.json_to_sheet(dashboardData.revenue);
     XLSX.utils.book_append_sheet(workbook, revenueSheet, 'Revenue');
+
+    // Satisfaction Sheet
+    const satisfactionSheet = XLSX.utils.json_to_sheet(dashboardData.satisfaction);
+    XLSX.utils.book_append_sheet(workbook, satisfactionSheet, 'Satisfaction');
+
+    // Target vs Reality Sheet
+    const targetSheet = XLSX.utils.json_to_sheet(dashboardData.targetReality);
+    XLSX.utils.book_append_sheet(workbook, targetSheet, 'Target vs Reality');
     
     // Top Products Sheet
     const productsSheet = XLSX.utils.json_to_sheet(dashboardData.topProducts);
@@ -175,6 +183,10 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
     // Sales by Country Sheet
     const salesSheet = XLSX.utils.json_to_sheet(dashboardData.salesByCountry);
     XLSX.utils.book_append_sheet(workbook, salesSheet, 'Sales by Country');
+
+    // Volume vs Service Sheet
+    const volumeSheet = XLSX.utils.json_to_sheet(dashboardData.volumeService);
+    XLSX.utils.book_append_sheet(workbook, volumeSheet, 'Volume vs Service');
     
     XLSX.writeFile(workbook, `full-dashboard-${timestamp}.xlsx`);
   } else if (format === 'pdf') {
