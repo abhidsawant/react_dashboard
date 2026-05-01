@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BarChart2, ShoppingCart, Package, TrendingUp } from 'lucide-react';
 import SummaryCard from '../../components/dashboard/SummaryCard/SummaryCard';
 import VisitorInsights from '../../components/dashboard/VisitorInsights/VisitorInsights';
@@ -7,7 +8,14 @@ import TargetReality from '../../components/dashboard/TargetReality/TargetRealit
 import TopProducts from '../../components/dashboard/TopProducts/TopProducts';
 import SalesMapping from '../../components/dashboard/SalesMapping/SalesMapping';
 import VolumeService from '../../components/dashboard/VolumeService/VolumeService';
+import ExportModal from '../../components/common/ExportModal/ExportModal';
 import { useRealtimeDashboard } from '../../hooks/useRealtimeDashboard';
+import {
+  exportDashboardSummaryToCSV,
+  exportDashboardSummaryToExcel,
+  exportDashboardSummaryToPDF,
+  exportFullDashboard
+} from '../../utils/exportUtils';
 import './Dashboard.css';
 
 const iconMap = {
@@ -19,14 +27,20 @@ const iconMap = {
 
 const Dashboard = () => {
   const { dashboardData, isLive, lastUpdated, toggleLive, refreshData } = useRealtimeDashboard(5000);
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
-  const handleExport = () => {
-    const dataToExport = {
-      summary: dashboardData.summary,
-      timestamp: new Date().toISOString()
-    };
-    console.log('Exporting data:', dataToExport);
-    alert('Export functionality - Data logged to console');
+  const handleExport = (format, type) => {
+    if (type === 'summary') {
+      if (format === 'csv') {
+        exportDashboardSummaryToCSV(dashboardData.summary);
+      } else if (format === 'excel') {
+        exportDashboardSummaryToExcel(dashboardData.summary);
+      } else if (format === 'pdf') {
+        exportDashboardSummaryToPDF(dashboardData.summary);
+      }
+    } else if (type === 'full') {
+      exportFullDashboard(dashboardData, format);
+    }
   };
 
   return (
@@ -41,7 +55,7 @@ const Dashboard = () => {
             </p>
           </div>
           <div className="button-group">
-            <button className="action-button export-btn" onClick={handleExport}>
+            <button className="action-button export-btn" onClick={() => setIsExportModalOpen(true)}>
               Export
             </button>
             <button className="action-button pause-btn" onClick={toggleLive}>
@@ -71,6 +85,13 @@ const Dashboard = () => {
       <TopProducts data={dashboardData.topProducts} />
       <SalesMapping data={dashboardData.salesByCountry} />
       <VolumeService data={dashboardData.volumeService} />
+
+      {/* Export Modal */}
+      <ExportModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
+        onExport={handleExport}
+      />
     </div>
   );
 };
