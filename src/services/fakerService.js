@@ -5,7 +5,7 @@ export const generateSummaryData = () => {
   const totalSales = faker.number.int({ min: 800, max: 2000 });
   const totalOrders = faker.number.int({ min: 50, max: 100 });
   const productsSold = faker.number.int({ min: 150, max: 300 });
-  const newCustomers = faker.number.int({ min: 5, max: 15 });
+  const newCustomers = faker.number.int({ min: 15, max: 20 });
 
   return [
     {
