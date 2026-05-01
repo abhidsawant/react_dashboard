@@ -1,6 +1,14 @@
 import * as XLSX from 'xlsx';
 import jsPDF from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
+
+// Generate timestamp with date and time
+const getTimestamp = () => {
+  const now = new Date();
+  const date = now.toISOString().split('T')[0]; // YYYY-MM-DD
+  const time = now.toTimeString().split(' ')[0].replace(/:/g, '-'); // HH-MM-SS
+  return `${date}_${time}`;
+};
 
 // Export to CSV
 export const exportToCSV = (data, filename = 'export.csv') => {
@@ -31,6 +39,7 @@ export const exportToCSV = (data, filename = 'export.csv') => {
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
+  URL.revokeObjectURL(url);
 };
 
 // Export to Excel
@@ -61,47 +70,42 @@ export const exportToPDF = (data, filename = 'export.pdf', title = 'Report') => 
   
   // Add title
   doc.setFontSize(18);
+  doc.setFont('helvetica', 'bold');
   doc.text(title, 14, 20);
   
   // Add timestamp
   doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
   doc.text(`Generated: ${new Date().toLocaleString()}`, 14, 30);
 
   // Prepare table data
   const headers = Object.keys(data[0]);
-  const rows = data.map(row => headers.map(header => row[header]));
+  const rows = data.map(row => headers.map(header => String(row[header] || '')));
 
-  // Add table
-  doc.autoTable({
+  // Add table using autoTable
+  autoTable(doc, {
     head: [headers],
     body: rows,
     startY: 40,
     theme: 'grid',
     styles: {
-      fontSize: 8,
-      cellPadding: 3,
+      fontSize: 10,
+      cellPadding: 4,
     },
     headStyles: {
       fillColor: [59, 130, 246],
       textColor: 255,
       fontStyle: 'bold',
+      halign: 'center',
     },
     alternateRowStyles: {
       fillColor: [245, 247, 250],
     },
+    margin: { top: 40 },
   });
 
   // Save PDF
   doc.save(filename);
-};
-
-
-// Generate timestamp with date and time
-const getTimestamp = () => {
-  const now = new Date();
-  const date = now.toISOString().split('T')[0]; // YYYY-MM-DD
-  const time = now.toTimeString().split(' ')[0].replace(/:/g, '-'); // HH-MM-SS
-  return `${date}_${time}`;
 };
 
 // Export Dashboard Summary to CSV
@@ -179,16 +183,19 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
     
     // Title
     doc.setFontSize(20);
+    doc.setFont('helvetica', 'bold');
     doc.text('Dashboard Report', 14, yPosition);
     yPosition += 10;
     
     // Timestamp
     doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
     doc.text(`Generated: ${new Date().toLocaleString()}`, 14, yPosition);
     yPosition += 15;
     
     // Summary Section
     doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
     doc.text("Today's Sales Summary", 14, yPosition);
     yPosition += 5;
     
@@ -198,12 +205,20 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
       item.change
     ]);
     
-    doc.autoTable({
+    autoTable(doc, {
       head: [['Metric', 'Value', 'Change']],
       body: summaryData,
       startY: yPosition,
       theme: 'grid',
-      headStyles: { fillColor: [59, 130, 246] },
+      headStyles: { 
+        fillColor: [59, 130, 246],
+        textColor: 255,
+        fontStyle: 'bold',
+      },
+      styles: {
+        fontSize: 10,
+        cellPadding: 4,
+      },
     });
     
     yPosition = doc.lastAutoTable.finalY + 15;
@@ -215,6 +230,7 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
     }
     
     doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
     doc.text('Top Products', 14, yPosition);
     yPosition += 5;
     
@@ -224,14 +240,30 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
       `${item.sales}%`
     ]);
     
-    doc.autoTable({
+    autoTable(doc, {
       head: [['#', 'Product Name', 'Sales']],
       body: productsData,
       startY: yPosition,
       theme: 'grid',
-      headStyles: { fillColor: [59, 130, 246] },
+      headStyles: { 
+        fillColor: [59, 130, 246],
+        textColor: 255,
+        fontStyle: 'bold',
+      },
+      styles: {
+        fontSize: 10,
+        cellPadding: 4,
+      },
     });
     
     doc.save(`full-dashboard-${timestamp}.pdf`);
+  } else if (format === 'csv') {
+    // For CSV, export summary only
+    const summaryData = dashboardData.summary.map(item => ({
+      'Metric': item.title,
+      'Value': item.value,
+      'Change': item.change
+    }));
+    exportToCSV(summaryData, `full-dashboard-${timestamp}.csv`);
   }
 };
