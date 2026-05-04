@@ -196,7 +196,7 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
     // Title
     doc.setFontSize(20);
     doc.setFont('helvetica', 'bold');
-    doc.text('Dashboard Report', 14, yPosition);
+    doc.text('Full Dashboard Report', 14, yPosition);
     yPosition += 10;
     
     // Timestamp
@@ -205,7 +205,7 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
     doc.text(`Generated: ${new Date().toLocaleString()}`, 14, yPosition);
     yPosition += 15;
     
-    // Summary Section
+    // ===== Summary Section =====
     doc.setFontSize(14);
     doc.setFont('helvetica', 'bold');
     doc.text("Today's Sales Summary", 14, yPosition);
@@ -222,25 +222,115 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
       body: summaryData,
       startY: yPosition,
       theme: 'grid',
-      headStyles: { 
-        fillColor: [59, 130, 246],
-        textColor: 255,
-        fontStyle: 'bold',
-      },
-      styles: {
-        fontSize: 10,
-        cellPadding: 4,
-      },
+      headStyles: { fillColor: [59, 130, 246] },
+      styles: { fontSize: 9 },
     });
     
-    yPosition = doc.lastAutoTable.finalY + 15;
+    // ===== Visitors Insights Section =====
+    doc.addPage();
+    yPosition = 20;
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Visitor Insights', 14, yPosition);
+    yPosition += 5;
     
-    // Top Products Section
+    const visitorsData = dashboardData.visitors.map(item => [
+      item.name,
+      item.loyal,
+      item.new,
+      item.unique
+    ]);
+    
+    autoTable(doc, {
+      head: [['Month', 'Loyal', 'New', 'Unique']],
+      body: visitorsData,
+      startY: yPosition,
+      theme: 'grid',
+      headStyles: { fillColor: [139, 92, 246] },
+      styles: { fontSize: 9 },
+    });
+    
+    // ===== Revenue Section =====
+    yPosition = doc.lastAutoTable.finalY + 15;
     if (yPosition > 250) {
       doc.addPage();
       yPosition = 20;
     }
     
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Total Revenue', 14, yPosition);
+    yPosition += 5;
+    
+    const revenueData = dashboardData.revenue.map(item => [
+      item.month,
+      `$${item.online}`,
+      `$${item.offline}`,
+      `$${item.total}`
+    ]);
+    
+    autoTable(doc, {
+      head: [['Month', 'Online', 'Offline', 'Total']],
+      body: revenueData,
+      startY: yPosition,
+      theme: 'grid',
+      headStyles: { fillColor: [59, 130, 246] },
+      styles: { fontSize: 9 },
+    });
+    
+    // ===== Customer Satisfaction Section =====
+    doc.addPage();
+    yPosition = 20;
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Customer Satisfaction', 14, yPosition);
+    yPosition += 5;
+    
+    const satisfactionData = dashboardData.satisfaction.map(item => [
+      item.month,
+      item.lastMonth,
+      item.thisMonth
+    ]);
+    
+    autoTable(doc, {
+      head: [['Month', 'Last Month', 'This Month']],
+      body: satisfactionData,
+      startY: yPosition,
+      theme: 'grid',
+      headStyles: { fillColor: [16, 185, 129] },
+      styles: { fontSize: 9 },
+    });
+    
+    // ===== Target vs Reality Section =====
+    yPosition = doc.lastAutoTable.finalY + 15;
+    if (yPosition > 250) {
+      doc.addPage();
+      yPosition = 20;
+    }
+    
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Target vs Reality', 14, yPosition);
+    yPosition += 5;
+    
+    const targetRealityData = dashboardData.targetReality.map(item => [
+      item.month,
+      item.reality,
+      item.target
+    ]);
+    
+    autoTable(doc, {
+      head: [['Month', 'Reality', 'Target']],
+      body: targetRealityData,
+      startY: yPosition,
+      theme: 'grid',
+      headStyles: { fillColor: [16, 185, 129] },
+      styles: { fontSize: 9 },
+    });
+    
+    // ===== Top Products Section =====
+    doc.addPage();
+    yPosition = 20;
     doc.setFontSize(14);
     doc.setFont('helvetica', 'bold');
     doc.text('Top Products', 14, yPosition);
@@ -249,33 +339,152 @@ export const exportFullDashboard = (dashboardData, format = 'excel') => {
     const productsData = dashboardData.topProducts.map(item => [
       item.id,
       item.name,
+      `${item.popularity}%`,
       `${item.sales}%`
     ]);
     
     autoTable(doc, {
-      head: [['#', 'Product Name', 'Sales']],
+      head: [['#', 'Product Name', 'Popularity', 'Sales']],
       body: productsData,
       startY: yPosition,
       theme: 'grid',
-      headStyles: { 
-        fillColor: [59, 130, 246],
-        textColor: 255,
-        fontStyle: 'bold',
-      },
-      styles: {
-        fontSize: 10,
-        cellPadding: 4,
-      },
+      headStyles: { fillColor: [59, 130, 246] },
+      styles: { fontSize: 9 },
+    });
+    
+    // ===== Sales by Country Section =====
+    yPosition = doc.lastAutoTable.finalY + 15;
+    if (yPosition > 250) {
+      doc.addPage();
+      yPosition = 20;
+    }
+    
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Sales by Country', 14, yPosition);
+    yPosition += 5;
+    
+    const salesByCountryData = dashboardData.salesByCountry.map(item => [
+      item.country,
+      `$${item.sales.toLocaleString()}`,
+      `${item.percentage}%`
+    ]);
+    
+    autoTable(doc, {
+      head: [['Country', 'Sales', 'Percentage']],
+      body: salesByCountryData,
+      startY: yPosition,
+      theme: 'grid',
+      headStyles: { fillColor: [245, 158, 11] },
+      styles: { fontSize: 9 },
+    });
+    
+    // ===== Volume vs Service Section =====
+    yPosition = doc.lastAutoTable.finalY + 15;
+    if (yPosition > 250) {
+      doc.addPage();
+      yPosition = 20;
+    }
+    
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Volume vs Service Level', 14, yPosition);
+    yPosition += 5;
+    
+    const volumeServiceData = dashboardData.volumeService.map(item => [
+      item.month,
+      item.volume,
+      item.service
+    ]);
+    
+    autoTable(doc, {
+      head: [['Month', 'Volume', 'Service']],
+      body: volumeServiceData,
+      startY: yPosition,
+      theme: 'grid',
+      headStyles: { fillColor: [139, 92, 246] },
+      styles: { fontSize: 9 },
     });
     
     doc.save(`full-dashboard-${timestamp}.pdf`);
   } else if (format === 'csv') {
-    // For CSV, export summary only
-    const summaryData = dashboardData.summary.map(item => ({
-      'Metric': item.title,
-      'Value': item.value,
-      'Change': item.change
-    }));
-    exportToCSV(summaryData, `full-dashboard-${timestamp}.csv`);
+    // For CSV, create a comprehensive text file with all sections
+    let csvContent = '';
+    
+    // Summary Section
+    csvContent += "TODAY'S SALES SUMMARY\n";
+    csvContent += 'Metric,Value,Change\n';
+    dashboardData.summary.forEach(item => {
+      csvContent += `${item.title},${item.value},${item.change}\n`;
+    });
+    csvContent += '\n\n';
+    
+    // Visitors Section
+    csvContent += 'VISITOR INSIGHTS\n';
+    csvContent += 'Month,Loyal,New,Unique\n';
+    dashboardData.visitors.forEach(item => {
+      csvContent += `${item.name},${item.loyal},${item.new},${item.unique}\n`;
+    });
+    csvContent += '\n\n';
+    
+    // Revenue Section
+    csvContent += 'TOTAL REVENUE\n';
+    csvContent += 'Month,Online,Offline,Total\n';
+    dashboardData.revenue.forEach(item => {
+      csvContent += `${item.month},${item.online},${item.offline},${item.total}\n`;
+    });
+    csvContent += '\n\n';
+    
+    // Customer Satisfaction Section
+    csvContent += 'CUSTOMER SATISFACTION\n';
+    csvContent += 'Month,Last Month,This Month\n';
+    dashboardData.satisfaction.forEach(item => {
+      csvContent += `${item.month},${item.lastMonth},${item.thisMonth}\n`;
+    });
+    csvContent += '\n\n';
+    
+    // Target vs Reality Section
+    csvContent += 'TARGET VS REALITY\n';
+    csvContent += 'Month,Reality,Target\n';
+    dashboardData.targetReality.forEach(item => {
+      csvContent += `${item.month},${item.reality},${item.target}\n`;
+    });
+    csvContent += '\n\n';
+    
+    // Top Products Section
+    csvContent += 'TOP PRODUCTS\n';
+    csvContent += '#,Product Name,Popularity,Sales\n';
+    dashboardData.topProducts.forEach(item => {
+      csvContent += `${item.id},"${item.name}",${item.popularity}%,${item.sales}%\n`;
+    });
+    csvContent += '\n\n';
+    
+    // Sales by Country Section
+    csvContent += 'SALES BY COUNTRY\n';
+    csvContent += 'Country,Sales,Percentage\n';
+    dashboardData.salesByCountry.forEach(item => {
+      csvContent += `${item.country},${item.sales},${item.percentage}%\n`;
+    });
+    csvContent += '\n\n';
+    
+    // Volume vs Service Section
+    csvContent += 'VOLUME VS SERVICE LEVEL\n';
+    csvContent += 'Month,Volume,Service\n';
+    dashboardData.volumeService.forEach(item => {
+      csvContent += `${item.month},${item.volume},${item.service}\n`;
+    });
+    
+    // Create and download CSV
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    
+    link.setAttribute('href', url);
+    link.setAttribute('download', `full-dashboard-${timestamp}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   }
 };
